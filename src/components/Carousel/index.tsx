@@ -749,46 +749,43 @@ export default class Carousel extends React.Component<CarouselProps, CarouselSta
             containerStyles.height = this.state.itemSize;
         }
         return (
-            <>
-                <div
-                    className={klass.ROOT(this.props.className)}
-                    ref={this.setCarouselWrapperRef}
-                    tabIndex={this.props.useKeyboardArrows ? 0 : undefined}
-                >
-                    <div className={klass.CAROUSEL(true)} style={{ width: this.props.width }}>
-                        {this.renderControls()}
-                        {this.props.renderArrowPrev(this.onClickPrev, hasPrev, this.props.labels.leftArrow)}
-                        <div className={klass.WRAPPER(true, this.props.axis)} style={containerStyles}>
-                            {isSwipeable ? (
-                                <Swipe
-                                    tagName="ul"
-                                    innerRef={this.setListRef}
-                                    {...swiperProps}
-                                    allowMouseEvents={this.props.emulateTouch}
-                                >
-                                    {this.props.infiniteLoop && lastClone}
-                                    {this.renderItems()}
-                                    {this.props.infiniteLoop && firstClone}
-                                </Swipe>
-                            ) : (
-                                <ul
-                                    className={klass.SLIDER(true, this.state.swiping)}
-                                    ref={(node: HTMLUListElement) => this.setListRef(node)}
-                                    style={this.state.itemListStyle || {}}
-                                >
-                                    {this.props.infiniteLoop && lastClone}
-                                    {this.renderItems()}
-                                    {this.props.infiniteLoop && firstClone}
-                                </ul>
-                            )}
-                        </div>
-                        {this.props.renderArrowNext(this.onClickNext, hasNext, this.props.labels.rightArrow)}
-                        {this.renderStatus()}
+            <div
+                className={klass.ROOT(this.props.className)}
+                ref={this.setCarouselWrapperRef}
+                tabIndex={this.props.useKeyboardArrows ? 0 : undefined}
+            >
+                <div className={klass.CAROUSEL(true)} style={{ width: this.props.width }}>
+                    {this.renderControls()}
+                    {this.props.renderArrowPrev(this.onClickPrev, hasPrev, this.props.labels.leftArrow)}
+                    <div className={klass.WRAPPER(true, this.props.axis)} style={containerStyles}>
+                        {isSwipeable ? (
+                            <Swipe
+                                tagName="ul"
+                                innerRef={this.setListRef}
+                                {...swiperProps}
+                                allowMouseEvents={this.props.emulateTouch}
+                            >
+                                {this.props.infiniteLoop && lastClone}
+                                {this.renderItems()}
+                                {this.props.infiniteLoop && firstClone}
+                            </Swipe>
+                        ) : (
+                            <ul
+                                className={klass.SLIDER(true, this.state.swiping)}
+                                ref={(node: HTMLUListElement) => this.setListRef(node)}
+                                style={this.state.itemListStyle || {}}
+                            >
+                                {this.props.infiniteLoop && lastClone}
+                                {this.renderItems()}
+                                {this.props.infiniteLoop && firstClone}
+                            </ul>
+                        )}
                     </div>
-                    {this.renderThumbs()}
+                    {this.props.renderArrowNext(this.onClickNext, hasNext, this.props.labels.rightArrow)}
+                    {this.renderStatus()}
                 </div>
-                <p>version 1</p>
-            </>
+                {this.renderThumbs()}
+            </div>
         );
     }
 }
