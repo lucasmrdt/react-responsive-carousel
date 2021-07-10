@@ -36,6 +36,7 @@ export interface CarouselProps {
         rightArrow: string;
         item: string;
     };
+    itemSize?: number;
     onClickItem: (index: number, item: React.ReactNode) => void;
     onClickThumb: (index: number, item: React.ReactNode) => void;
     onChange: (index: number, item: React.ReactNode) => void;

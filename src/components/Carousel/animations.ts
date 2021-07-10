@@ -98,7 +98,8 @@ export const slideSwipeAnimationHandler: SwipeAnimationHandler = (
         handledDelta = 0;
     }
 
-    let position = currentPosition + 100 / (state.itemSize / handledDelta);
+    const itemSize = props.itemSize || state.itemSize;
+    let position = currentPosition + 100 / (itemSize / handledDelta);
     const hasMoved = Math.abs(axisDelta) > props.swipeScrollTolerance;
 
     if (props.infiniteLoop && hasMoved) {
